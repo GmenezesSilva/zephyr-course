@@ -1,0 +1,56 @@
+# Available runners configured by board.cmake.
+runners:
+- openocd
+- esp32
+
+# Default flash runner if --runner is not given.
+flash-runner: esp32
+
+# Default debug runner if --runner is not given.
+debug-runner: openocd
+
+# Common runner configuration values.
+config:
+  board_dir: C:/Users/mene_/zephyr/boards/seeed/xiao_esp32c5
+  # Build outputs:
+  elf_file: zephyr.elf
+  bin_file: zephyr.bin
+  # Host tools:
+  gdb: C:/Users/mene_/zephyr-sdk-1.0.1/gnu/riscv64-zephyr-elf/bin/riscv64-zephyr-elf-gdb-py.exe
+
+# Runner specific arguments
+args:
+  openocd:
+    - --cmd-load
+    - flash write_image erase
+    - --cmd-verify
+    - verify_image
+    - --no-halt
+    - --no-targets
+    - --no-load
+    - --target-handle
+    - _TARGETNAME_0
+    - --gdb-init
+    - set remote hardware-watchpoint-limit 3
+    - --gdb-init
+    - maintenance flush register-cache
+    - --gdb-init
+    - mon esp appimage_offset 0
+    - --gdb-init
+    - mon reset halt
+    - --gdb-init
+    - thb main
+    - --file-type=bin
+    - --flash-address=0
+    - --cmd-load
+    - program_esp
+    - --cmd-verify
+    - esp verify_bank_hash 0
+  esp32:
+    - --esp-monitor-baud=
+    - --esp-idf-path=C:/Users/mene_/modules/hal/espressif
+    - --esp-app-address=0x2000
+    - --esp-flash-size=8MB
+    - --esp-flash-freq=80m
+    - --esp-flash-mode=dio
+    - --esp-idf-path=C:/Users/mene_/modules/hal/espressif
