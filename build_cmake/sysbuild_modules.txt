@@ -1,1 +1,0 @@
-"mcuboot":"C:/Users/mene_/bootloader/mcuboot":"C:/Users/mene_/bootloader/mcuboot/boot/zephyr/sysbuild"

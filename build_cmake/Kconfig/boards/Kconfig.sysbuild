@@ -1,2 +1,0 @@
-# Load Sysbuild board Kconfig descriptions.
-osource "C:/Users/mene_/zephyr/boards/seeed/xiao_esp32c5/Kconfig.sysbuild"

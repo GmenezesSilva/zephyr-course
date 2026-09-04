@@ -1,0 +1,9 @@
+mainmenu "IOMICO Zephyr Course"
+    config APP_HEARTBEAT_PERIOD_MS
+        int "Heartbeat period in milliseconds"
+        default 500
+        range 100 2000
+        help
+          Set the heartbeat period for the application in milliseconds.
+
+source "Kconfig.zephyr"

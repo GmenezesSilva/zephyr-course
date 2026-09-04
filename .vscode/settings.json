@@ -1,4 +1,4 @@
 {
-    "cmake.sourceDirectory": "C:/Users/mene_/Documents/Estudo/Cursos/zephyr-course/app",
+    "cmake.sourceDirectory": "/home/gustavo-menezes/Documents/Estudos/zephyr-course/app",
     "idf.currentSetup": "C:\\esp\\v6.0\\esp-idf"
 }
