@@ -1,0 +1,6 @@
+board:
+  name: custom_scratch_esp32s3
+  full_name: Custom Scratch ESP32-S3
+  vendor: Seeed Studio
+  socs:
+    - name: esp32s3

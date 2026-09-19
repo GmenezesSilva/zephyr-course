@@ -1,0 +1,11 @@
+identifier: custom_scratch_esp32s3/esp32s3/procpu
+name: Custom Scratch ESP32-S3 PROCPU
+type: mcu
+arch: xtensa
+toolchain:
+  - zephyr
+ram: 512
+flash: 8192
+supported:
+  - gpio
+  - uart
