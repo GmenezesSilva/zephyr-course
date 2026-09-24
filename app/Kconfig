@@ -7,3 +7,4 @@ mainmenu "IOMICO Zephyr Course"
           Set the heartbeat period for the application in milliseconds.
 
 source "Kconfig.zephyr"
+rsource "drivers/my_driver/Kconfig"

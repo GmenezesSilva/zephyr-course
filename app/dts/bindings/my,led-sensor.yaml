@@ -1,0 +1,6 @@
+description: "Custom driver for controlling the LED on the device."
+compatible: "my,led-sensor"
+include: "base.yaml"
+properties:
+  status:
+    required: true

@@ -1,0 +1,5 @@
+config MY_DRIVER
+    bool "My Driver"
+    default y
+    help
+      Enable support for My Driver. This driver provides control to led

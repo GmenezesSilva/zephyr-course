@@ -1,0 +1,18 @@
+/ {
+    aliases {
+        app-led = &user_led;
+    };
+
+    leds {
+        compatible = "gpio-leds";
+        user_led: led_0 {
+            gpios = <&gpio0 21 GPIO_ACTIVE_HIGH>;
+            label = "User LED";
+        };
+    };
+
+    my_led_sensor {
+        compatible = "my,led-sensor";
+        status = "okay";
+    };
+};
