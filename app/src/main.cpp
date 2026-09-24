@@ -2,6 +2,8 @@
 #include <zephyr/logging/log.h>
 #include <zephyr/drivers/sensor.h>
 
+extern "C" int my_led_sensor_set_mode(const struct device *dev, int mode);
+
 LOG_MODULE_REGISTER(main, LOG_LEVEL_INF);
 
 int main(void)
@@ -17,6 +19,8 @@ int main(void)
 
     bool led_state = false;
     struct sensor_value val;
+
+    my_led_sensor_set_mode(dev, 1);
 
     while(1)
     {

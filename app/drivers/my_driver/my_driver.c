@@ -16,9 +16,23 @@ LOG_MODULE_REGISTER(my_driver, CONFIG_SENSOR_LOG_LEVEL);
 #error "Unsupported board: app_led devicetree alias is not defined"
 #endif
 
-static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED_NODE, gpios);
+struct my_led_data {
+    int mode;
+};
 
-/* TASK 1: Fetch LIGA o LED */
+static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(LED_NODE, gpios);
+static struct my_led_data my_data;
+
+int my_led_sensor_set_mode(const struct device *dev, int mode)
+{
+    struct my_led_data *data = dev->data;
+
+    data->mode = mode;
+    LOG_INF("mode set to %d", mode);
+    return 0;
+}
+
+// LED status: ON
 static int my_led_sample_fetch(const struct device *dev, enum sensor_channel chan)
 {
     gpio_pin_set_dt(&led, 1);
@@ -26,7 +40,7 @@ static int my_led_sample_fetch(const struct device *dev, enum sensor_channel cha
     return 0;
 }
 
-/* TASK 1: Get DESLIGA o LED */
+// LED status: OFF
 static int my_led_channel_get(const struct device *dev, enum sensor_channel chan, struct sensor_value *val)
 {
     gpio_pin_set_dt(&led, 0);
@@ -52,11 +66,10 @@ static int led_sensor_init(const struct device *dev)
     return gpio_pin_configure_dt(&led, GPIO_OUTPUT_INACTIVE);
 }
 
-/* Instanciação direta para a instância 0 (índice 0 como 1º argumento) */
 DEVICE_DT_INST_DEFINE(0,
                       led_sensor_init,
                       NULL,
-                      NULL,
+                      &my_data,             // <- ADD new API control structure
                       NULL,
                       POST_KERNEL,
                       CONFIG_SENSOR_INIT_PRIORITY,
