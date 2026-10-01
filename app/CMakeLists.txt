@@ -7,4 +7,5 @@ project(my_zephyr_app)
 target_sources(app PRIVATE 
                 src/main.cpp 
                 drivers/my_driver/my_driver.c
+                drivers/my_driver/my_driver_shell.c
             )

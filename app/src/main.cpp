@@ -20,16 +20,16 @@ int main(void)
 
     while(1)
     {
-        if(led_state)
-        {
-            sensor_sample_fetch(dev);
-        }
-        else
-        {
-            sensor_channel_get(dev, SENSOR_CHAN_ALL, &val);
-        }
+        // if(led_state)
+        // {
+        //     sensor_sample_fetch(dev);
+        // }
+        // else
+        // {
+        //     sensor_channel_get(dev, SENSOR_CHAN_ALL, &val);
+        // }
 
-        led_state = !led_state;
+        // led_state = !led_state;
         k_msleep(1000);
     }
 
