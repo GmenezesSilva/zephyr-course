@@ -1,3 +1,7 @@
 if(CONFIG_MY_DRIVER)
     target_sources(app PRIVATE my_driver.c)
+    
+    if(CONFIG_SHELL)
+        target_sources(app PRIVATE my_driver_shell.c)
+    endif()
 endif()
